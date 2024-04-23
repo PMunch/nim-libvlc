@@ -2,7 +2,7 @@ import std/strutils
 
 import futhark
 
-proc myRename(name, kind: string, partof = ""): string = 
+proc myRename(name, kind: string, partof = ""): string =
   result = name
   # Special-case libvlc_new
   if result == "libvlc_new":
@@ -12,7 +12,6 @@ proc myRename(name, kind: string, partof = ""): string =
 
 when defined(linux):
   importc:
-    sysPath "/usr/lib/clang/13.0.1/include"
-    path "/usr/include/"
+    path "/usr/include/vlc"
     renameCallback myRename
-    "vlc/vlc.h"
+    "vlc.h"
